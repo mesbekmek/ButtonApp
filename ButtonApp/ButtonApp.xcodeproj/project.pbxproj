@@ -15,6 +15,7 @@
 		18EE0B7C1CA6CE84002289E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EE0B7A1CA6CE84002289E4 /* LaunchScreen.storyboard */; };
 		18EE0B871CA6CE85002289E4 /* ButtonAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE0B861CA6CE85002289E4 /* ButtonAppTests.m */; };
 		18EE0B921CA6CE85002289E4 /* ButtonAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EE0B911CA6CE85002289E4 /* ButtonAppUITests.m */; };
+		6F4262FC88F3A94403CF1B5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE6BE7EAECCE26D8052B380 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,9 @@
 		18EE0B8D1CA6CE85002289E4 /* ButtonAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ButtonAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EE0B911CA6CE85002289E4 /* ButtonAppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonAppUITests.m; sourceTree = "<group>"; };
 		18EE0B931CA6CE85002289E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		550C8860D5074FFCAAB69BD6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AA001F9F46467F4FF3B38993 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CDE6BE7EAECCE26D8052B380 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4262FC88F3A94403CF1B5F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		189ABC2A912C1E9A9FE98996 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA001F9F46467F4FF3B38993 /* Pods.debug.xcconfig */,
+				550C8860D5074FFCAAB69BD6 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		18EE0B601CA6CE84002289E4 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +99,8 @@
 				18EE0B851CA6CE85002289E4 /* ButtonAppTests */,
 				18EE0B901CA6CE85002289E4 /* ButtonAppUITests */,
 				18EE0B6A1CA6CE84002289E4 /* Products */,
+				189ABC2A912C1E9A9FE98996 /* Pods */,
+				EA87A10AEE6D4445D4592EBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +156,14 @@
 			path = ButtonAppUITests;
 			sourceTree = "<group>";
 		};
+		EA87A10AEE6D4445D4592EBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDE6BE7EAECCE26D8052B380 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EE0B961CA6CE85002289E4 /* Build configuration list for PBXNativeTarget "ButtonApp" */;
 			buildPhases = (
+				808DBAF38AC1BF11C3A3C4A7 /* Check Pods Manifest.lock */,
 				18EE0B651CA6CE84002289E4 /* Sources */,
 				18EE0B661CA6CE84002289E4 /* Frameworks */,
 				18EE0B671CA6CE84002289E4 /* Resources */,
+				B604ADB22BAFBF44313F0527 /* Embed Pods Frameworks */,
+				DBC527292590BA5276D287FE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +291,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		808DBAF38AC1BF11C3A3C4A7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B604ADB22BAFBF44313F0527 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBC527292590BA5276D287FE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18EE0B651CA6CE84002289E4 /* Sources */ = {
@@ -411,6 +486,7 @@
 		};
 		18EE0B971CA6CE85002289E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA001F9F46467F4FF3B38993 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ButtonApp/Info.plist;
@@ -422,6 +498,7 @@
 		};
 		18EE0B981CA6CE85002289E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 550C8860D5074FFCAAB69BD6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ButtonApp/Info.plist;
@@ -498,6 +575,7 @@
 				18EE0B981CA6CE85002289E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18EE0B991CA6CE85002289E4 /* Build configuration list for PBXNativeTarget "ButtonAppTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +584,7 @@
 				18EE0B9B1CA6CE85002289E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18EE0B9C1CA6CE85002289E4 /* Build configuration list for PBXNativeTarget "ButtonAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +593,7 @@
 				18EE0B9E1CA6CE85002289E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
