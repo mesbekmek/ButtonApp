@@ -43,7 +43,6 @@ UIAppearanceContainer
     [super viewDidLoad];
     [self setuplocationManager];
     [self setupmapView];
-    [self setupButtons];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.navigationItem.title = @"Buttonz";
@@ -107,14 +106,11 @@ UIAppearanceContainer
     [[BTNDropinButton appearance] setTextColor:[UIColor blackColor]];
 }
 
-- (void)setupButtons {
+- (void)setupButton {
+    
     [self buttonApperance];
-
     BTNLocation *location = [BTNLocation locationWithName:@"Sushi" latitude:self.latitude  longitude:self.longitude];
     BTNContext *context = [BTNContext contextWithSubjectLocation:location];
-    
-    self.uberButton.buttonId = @"btn-0fdbec44cbe6ef8b";
-    [self.uberButton addTarget:self action:@selector(uberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.uberButton prepareWithContext:context completion:^(BOOL isDisplayable) {
         if (isDisplayable) {
@@ -123,17 +119,6 @@ UIAppearanceContainer
     }];
     
     [Button allowButtonToRequestLocationPermission:YES];
-}
-
-
-#pragma mark - BTNDropinButton IBActions
-
-- (void)uberButtonTapped:(BTNDropinButton *)sender {
-    NSLog(@"Working");
-}
-
-- (void)airbnbButtonTapped:(BTNDropinButton *)sender {
-    NSLog(@"Working");
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -159,6 +144,7 @@ UIAppearanceContainer
         self.longitude = location.coordinate.longitude;
         
         [self fetchVenuesAtLocation:location];
+        [self setupButton];
         if (!self.mapIsSetup) {
             [self setupMapRegion];
             
@@ -168,7 +154,7 @@ UIAppearanceContainer
     [self.locationManager stopUpdatingLocation];
     self.locationManager = nil;
     self.locationManager.delegate = nil;
-
+    
 }
 
 #pragma mark - TableView Delegate methods
