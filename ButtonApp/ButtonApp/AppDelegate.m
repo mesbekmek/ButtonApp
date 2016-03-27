@@ -50,18 +50,18 @@
 
 #pragma mark - Button Appearance Proxy Styling
 
-- (void)applyButtonAppearance {
-    
-    BTNDropinButton *appearance = [BTNDropinButton appearance];
-    appearance.highlightedTextColor = [UIColor lightGrayColor];
-    appearance.iconSize     = 20.0;
-    appearance.borderColor  = [UIColor blueColor];
-    appearance.borderWidth  = 1.0;
-    appearance.cornerRadius = 5.0;
-    
-    appearance = [BTNDropinButton appearanceWhenContainedIn:
-                  [ViewController class], nil];
-    appearance.borderWidth = 0.0;
-}
+//- (void)applyButtonAppearance {
+//    
+//    BTNDropinButton *appearance = [BTNDropinButton appearance];
+//    appearance.highlightedTextColor = [UIColor lightGrayColor];
+//    appearance.iconSize     = 20.0;
+//    appearance.borderColor  = [UIColor blueColor];
+//    appearance.borderWidth  = 1.0;
+//    appearance.cornerRadius = 5.0;
+//    
+//    appearance = [BTNDropinButton appearanceWhenContainedIn:
+//                  [ViewController class], nil];
+//    appearance.borderWidth = 0.0;
+//}
 
 @end

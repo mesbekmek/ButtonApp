@@ -13,7 +13,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface ViewController ()<
+@interface ViewController ()
+<
 CLLocationManagerDelegate,
 MKMapViewDelegate,
 UITableViewDataSource,
@@ -46,6 +47,7 @@ UIAppearanceContainer
     [self setupButtons];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.navigationItem.title = @"Buttonz";
 }
 
 #pragma mark - MapView Methods
@@ -90,6 +92,7 @@ UIAppearanceContainer
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
         [self.locationManager requestWhenInUseAuthorization];
     }
     [self.locationManager startUpdatingLocation];
@@ -97,7 +100,18 @@ UIAppearanceContainer
 
 #pragma mark - BTNButtons setup
 
+- (void)buttonApperance {
+    [[BTNDropinButton appearance] setContentInsets:UIEdgeInsetsMake(0.0, 16.0, 0.0, 15.0)];
+    [[BTNDropinButton appearance] setIconSize:26.0];
+    [[BTNDropinButton appearance] setIconLabelSpacing:13.0];
+    [[BTNDropinButton appearance] setFont:[UIFont systemFontOfSize:16.0]];
+    [[BTNDropinButton appearance] setTextColor:[UIColor blackColor]];
+}
+
 - (void)setupButtons {
+    
+    //Apperance
+    [self buttonApperance];
     
     //Location and Context
     BTNLocation *location = [BTNLocation locationWithName:@"Sushi" latitude:self.latitude  longitude:self.longitude];
@@ -114,7 +128,7 @@ UIAppearanceContainer
     }];
     
     //Airbnb
-    self.airbnbButton.buttonId = @"btn-576ecb18092adc6c";
+    //self.airbnbButton = [[BTNDropinButton alloc] initWithButtonId:@"btn-576ecb18092adc6c"];
     [self.airbnbButton addTarget:self action:@selector(airbnbButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.airbnbButton prepareWithContext:context completion:^(BOOL isDisplayable) {
@@ -153,9 +167,6 @@ UIAppearanceContainer
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     
-    [self.locationManager stopUpdatingLocation];
-    self.locationManager = nil;
-    self.locationManager.delegate = nil;
     CLLocation *location = locations.lastObject;
     if (location != nil) {
         self.latitude = location.coordinate.latitude;
@@ -167,6 +178,10 @@ UIAppearanceContainer
             
         }
     }
+    
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager = nil;
+    self.locationManager.delegate = nil;
 
 }
 

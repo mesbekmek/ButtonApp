@@ -45,14 +45,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pP-hJ-XQM">
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJe-0k-tIQ" userLabel="Airbnb Button" customClass="BTNDropinButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="gOE-8A-ZVz"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWV-ul-cno" customClass="BTNDropinButton">
-                                        <rect key="frame" x="300" y="0.0" width="300" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="8hM-af-5sD"/>
                                         </constraints>
@@ -60,19 +54,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dWV-ul-cno" firstAttribute="top" secondItem="4pP-hJ-XQM" secondAttribute="top" id="7D0-Ny-ZOC"/>
-                                    <constraint firstAttribute="bottom" secondItem="BJe-0k-tIQ" secondAttribute="bottom" id="AY6-4l-PF1"/>
-                                    <constraint firstItem="BJe-0k-tIQ" firstAttribute="leading" secondItem="4pP-hJ-XQM" secondAttribute="leading" id="JaS-sC-NOW"/>
-                                    <constraint firstItem="dWV-ul-cno" firstAttribute="leading" secondItem="BJe-0k-tIQ" secondAttribute="trailing" id="LNV-gC-PbC"/>
                                     <constraint firstItem="dWV-ul-cno" firstAttribute="leading" secondItem="4pP-hJ-XQM" secondAttribute="leading" constant="360" id="QMQ-Jm-pmp"/>
-                                    <constraint firstItem="BJe-0k-tIQ" firstAttribute="width" secondItem="dWV-ul-cno" secondAttribute="width" id="VL8-Qd-5vW"/>
                                     <constraint firstAttribute="trailing" secondItem="dWV-ul-cno" secondAttribute="trailing" id="akR-V7-Trn"/>
-                                    <constraint firstItem="BJe-0k-tIQ" firstAttribute="width" secondItem="dWV-ul-cno" secondAttribute="width" id="ctG-7w-u8K"/>
+                                    <constraint firstItem="dWV-ul-cno" firstAttribute="leading" secondItem="4pP-hJ-XQM" secondAttribute="leading" id="d0e-Lj-5vX"/>
                                     <constraint firstAttribute="bottom" secondItem="dWV-ul-cno" secondAttribute="bottom" id="v14-qg-5iU"/>
-                                    <constraint firstItem="BJe-0k-tIQ" firstAttribute="top" secondItem="4pP-hJ-XQM" secondAttribute="top" id="yIZ-Rz-O96"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="VL8-Qd-5vW"/>
                                         <exclude reference="QMQ-Jm-pmp"/>
                                     </mask>
                                 </variation>
@@ -95,7 +83,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="SGx-vi-Stt"/>
                     <connections>
-                        <outlet property="airbnbButton" destination="BJe-0k-tIQ" id="W3L-na-IOZ"/>
                         <outlet property="mapView" destination="k6q-Ui-m8F" id="64A-PL-9YY"/>
                         <outlet property="tableView" destination="Ngg-Qz-UH9" id="U8w-oo-g61"/>
                         <outlet property="uberButton" destination="dWV-ul-cno" id="OZI-gi-Cha"/>
