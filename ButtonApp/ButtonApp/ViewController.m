@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+
 @interface ViewController ()<
 CLLocationManagerDelegate,
 MKMapViewDelegate,
@@ -24,6 +25,8 @@ UIAppearanceContainer
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
+@property (nonatomic) BOOL mapIsSetup;
+
 @end
 
 @implementation ViewController
@@ -42,14 +45,17 @@ UIAppearanceContainer
 - (void)setupmapView {
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
-    
+}
+
+- (void)setupMapRegion {
     if (self.latitude && self.longitude) {
         
-        MKCoordinateSpan span = MKCoordinateSpanMake(50, 50);
+        MKCoordinateSpan span = MKCoordinateSpanMake(1, 1);
         CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(self.latitude, self.longitude);
         
-        MKCoordinateRegion region = MKCoordinateRegionMake(coordinates, span);
+        MKCoordinateRegion region = [self.mapView regionThatFits:MKCoordinateRegionMake(coordinates, span)];
         [self.mapView setRegion:region];
+        self.mapIsSetup = YES;
     }
 }
 
@@ -89,12 +95,11 @@ UIAppearanceContainer
     self.airbnbButton.buttonId = @"btn-6d7aff7a12c15cf3";
     [self.airbnbButton addTarget:self action:@selector(airbnbButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-//    [self.airbnbButton prepareWithContext:context completion:^(BOOL isDisplayable) {
-//        if (!isDisplayable) {
-//            NSLog(@"Something wrong");
-//        }
-//    }];
+    [self.airbnbButton prepareWithContext:context completion:^(BOOL isDisplayable) {
+        if (!isDisplayable) {
+            NSLog(@"Something wrong");
+        }
+    }];
     
     [Button allowButtonToRequestLocationPermission:YES];
 }
@@ -123,12 +128,19 @@ UIAppearanceContainer
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     
-    CLLocation *location = locations.firstObject;
+    CLLocation *location = locations.lastObject;
     if (location != nil) {
         self.latitude = location.coordinate.latitude;
         self.longitude = location.coordinate.longitude;
+        
+        if (!self.mapIsSetup) {
+            [self setupMapRegion];
+            
+        }
     }
     [self.locationManager stopUpdatingLocation];
 }
