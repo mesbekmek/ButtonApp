@@ -110,7 +110,7 @@ UIAppearanceContainer
     
     [self buttonApperance];
     BTNLocation *location = [BTNLocation locationWithName:@"Sushi" latitude:self.latitude  longitude:self.longitude];
-    BTNContext *context = [BTNContext contextWithSubjectLocation:location];
+    BTNContext *context = [BTNContext contextWithUserLocation:location];
     
     [self.uberButton prepareWithContext:context completion:^(BOOL isDisplayable) {
         if (isDisplayable) {
