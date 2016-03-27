@@ -125,6 +125,7 @@ UIAppearanceContainer
     [Button allowButtonToRequestLocationPermission:YES];
 }
 
+
 #pragma mark - BTNDropinButton IBActions
 
 - (void)uberButtonTapped:(BTNDropinButton *)sender {
@@ -189,6 +190,7 @@ UIAppearanceContainer
     
     return cell;
 }
+
 
 #pragma mark - Foursquare Method
 
