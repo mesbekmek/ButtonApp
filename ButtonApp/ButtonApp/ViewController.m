@@ -22,7 +22,6 @@ UITableViewDelegate,
 UIAppearanceContainer
 >
 
-@property (strong, nonatomic) IBOutlet BTNDropinButton *airbnbButton;
 @property (strong, nonatomic) IBOutlet BTNDropinButton *uberButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -109,31 +108,17 @@ UIAppearanceContainer
 }
 
 - (void)setupButtons {
-    
-    //Apperance
     [self buttonApperance];
-    
-    //Location and Context
+
     BTNLocation *location = [BTNLocation locationWithName:@"Sushi" latitude:self.latitude  longitude:self.longitude];
     BTNContext *context = [BTNContext contextWithSubjectLocation:location];
     
-    //Uber
     self.uberButton.buttonId = @"btn-0fdbec44cbe6ef8b";
     [self.uberButton addTarget:self action:@selector(uberButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.uberButton prepareWithContext:context completion:^(BOOL isDisplayable) {
         if (isDisplayable) {
             NSLog(@"Displayable");
-        }
-    }];
-    
-    //Airbnb
-    //self.airbnbButton = [[BTNDropinButton alloc] initWithButtonId:@"btn-576ecb18092adc6c"];
-    [self.airbnbButton addTarget:self action:@selector(airbnbButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.airbnbButton prepareWithContext:context completion:^(BOOL isDisplayable) {
-        if (!isDisplayable) {
-            NSLog(@"Something wrong");
         }
     }];
     
