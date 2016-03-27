@@ -153,6 +153,9 @@ UIAppearanceContainer
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager = nil;
+    self.locationManager.delegate = nil;
     CLLocation *location = locations.lastObject;
     if (location != nil) {
         self.latitude = location.coordinate.latitude;
@@ -164,7 +167,7 @@ UIAppearanceContainer
             
         }
     }
-    [self.locationManager stopUpdatingLocation];
+
 }
 
 #pragma mark - TableView Delegate methods
